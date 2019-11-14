@@ -1,19 +1,49 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import HomeScreen from './screens/HomeScreen';
+// import CameraScreen from './screens/CameraScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const TabNavigator = createBottomTabNavigator(
+  {
+    Home: HomeScreen
+    // Camera: CameraScreen
   },
-});
+  {
+    tabBarOptions: {
+      inactiveBackgroundColor: 'lightgray',
+      activeBackgroundColor: 'white',
+      activeTintColor: 'red',
+      inactiveTintColor: 'gray'
+    }
+  }
+);
+
+export default createAppContainer(TabNavigator);
+
+// export default class App extends React.Component {
+//   render() {
+//     return <AppContainer />;
+//   }
+// }
+
+// const AppNavigator = createStackNavigator(
+//   {
+//     Home: { screen: HomeScreen },
+//     Details: { screen: DetailScreen }
+//   },
+// {
+//   initialRouteName: 'Home',
+//   defaultNavigationOptions: {
+//     headerStyle: {
+//       backgroundColor: '#f4511e'
+//     },
+//     headerTintColor: '#fff',
+//     headerTitleStyle: {
+//       fontWeight: 'bold'
+//     }
+//   }
+// }
+// );
+
+// const AppContainer = createAppContainer(AppNavigator);

@@ -1,13 +1,13 @@
 import { createAppContainer } from 'react-navigation';
 import HomeScreen from './screens/HomeScreen';
-// import CameraScreen from './screens/CameraScreen';
+import CameraScreen from './screens/CameraScreen';
 
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 const TabNavigator = createBottomTabNavigator(
   {
-    Home: HomeScreen
-    // Camera: CameraScreen
+    Home: HomeScreen,
+    Camera: CameraScreen
   },
   {
     tabBarOptions: {

@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
+import SeachBar from '../components/SearchBar';
 
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Home'
-    /* No more header config here! */
-  };
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.MainText}>This is Home Screen</Text>
-      </View>
-    );
-  }
-}
+const HomeScreen = () => {
+  const [term, setTerm] = useState('');
+  return (
+    <View style={styles.container}>
+      <SeachBar
+        term={term}
+        onTermChange={newTerm => setTerm(newTerm)}
+        onTermSubmit={() => console.log('hey')}
+      />
+      <Text style={styles.MainText}>This is Home Screen</Text>
+      <Button title="button" />
+    </View>
+  );
+};
 
 const HomeStack = createStackNavigator({
   Home: { screen: HomeScreen }

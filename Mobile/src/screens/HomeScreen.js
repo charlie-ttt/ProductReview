@@ -1,53 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import SearchBar from '../components/SearchBar';
-import ResultsList from '../components/ResultsList';
-import useResults from '../hooks/useResults';
+import ProductsList from '../components/ProductsList';
+// import useResults from '../hooks/useResults';
 import axios from 'axios';
 import { ngrokSecret } from '../../secrets';
 
 const HomeScreen = () => {
   const [term, setTerm] = useState('');
-  const [searchApi, results, errorMessage] = useResults();
-
-  const searchDb = async () => {
-    console.log('submitted ye');
-    // const { data } = await axios.get('/');
-    // console.log(data);
-  };
+  // const [results, errorMessage] = useResults();
+  const [test, setTest] = useState('');
 
   const handlePress = async () => {
-    console.log('dog');
-    // const { data } = await axios.get(`${ngrokSecret}/api/products/`);
-    // console.log(data);
-  };
-
-  const filterResultsByPrice = price => {
-    // price === '$' || '$$' || '$$$'
-    return results.filter(result => {
-      return result.price === price;
-    });
+    console.log('click me');
+    const { data } = await axios.get(
+      `${ngrokSecret}/api/products/search/${term}`
+    );
+    console.log('TCL: data', data[0].longName);
+    setTest(data);
   };
 
   return (
     <>
+      <Button title={'Click me'} onPress={handlePress} />
+
       <SearchBar
         term={term}
         onTermChange={setTerm}
-        onTermSubmit={() => searchApi(term)}
+        onTermSubmit={() => console.log('nothing right now')}
       />
-      {errorMessage ? <Text>{errorMessage}</Text> : null}
+      {/* {errorMessage ? <Text>{errorMessage}</Text> : null} */}
       <ScrollView>
-        <ResultsList
-          results={filterResultsByPrice('$')}
-          title="Cost Effective"
+        <ProductsList
+          // results={filterResultsByPrice('$')}
+          title="chips"
         />
-        <ResultsList results={filterResultsByPrice('$$')} title="Bit Pricier" />
-        <ResultsList
-          results={filterResultsByPrice('$$$')}
-          title="Big Spender"
+        {/* <ProductsList
+          // results={filterResultsByPrice('$$')}
+          title="Chocolate"
         />
+        <ProductsList
+          // results={filterResultsByPrice('$$$')}
+          title="Nondairy Milk"
+        /> */}
       </ScrollView>
     </>
   );

@@ -2,42 +2,37 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Product = db.define('product', {
-  ndb_number: {
-    type: Sequelize.STRING,
+  ndbNumber: {
+    type: Sequelize.INTEGER,
     unique: true,
     allowNull: false
   },
-  long_name: {
+  longName: {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  data_source: {
+  dataSource: {
     type: Sequelize.STRING
   },
-  gtin_upc: {
-    type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
+  gtinupc: {
+    type: Sequelize.STRING
   },
   manufacturer: {
-    type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
+    type: Sequelize.STRING
   },
-  date_modified: {
-    type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
+  dateModified: {
+    type: Sequelize.STRING
   },
-  date_available: {
-    type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
+  dateAvailable: {
+    type: Sequelize.STRING
   },
-  ingredients_english: {
+  ingredientsEnglish: {
     type: Sequelize.TEXT,
     unique: true,
     allowNull: false
+  },
+  photoUrl: {
+    type: Sequelize.STRING
   }
 })
 

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { TextInput, View, StyleSheet, Button } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import { Feather, AntDesign } from '@expo/vector-icons';
 
-const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
+const SearchBar = ({ term, onTermChange, onTermSubmit, navigation }) => {
   return (
     <View style={styles.backgroundStyle}>
       <Feather name="search" style={styles.iconStyle} />
@@ -16,6 +17,12 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
         value={term}
         onEndEditing={onTermSubmit}
       />
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Camera')}
+        style={{ alignSelf: 'center' }}
+      >
+        <AntDesign name="camerao" style={styles.iconStyle} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -39,4 +46,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SearchBar;
+export default withNavigation(SearchBar);

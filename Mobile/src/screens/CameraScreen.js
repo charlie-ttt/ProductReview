@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, Alert } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 
@@ -30,32 +31,59 @@ class CameraScreen extends React.Component {
       return <Text>No access to camera</Text>;
     }
     return (
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'flex-end'
-        }}
-      >
+      <View style={styles.CameraContainer}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
-          style={StyleSheet.absoluteFillObject}
+          style={styles.BarcodeCamera}
         />
-
-        {scanned && (
-          <Button
-            title={'CLICK to Scan Again'}
-            onPress={() => this.setState({ scanned: false })}
-          />
-        )}
+        <View style={styles.ButtonStyle}>
+          {scanned && (
+            <Button
+              title={'CLICK to Scan Again'}
+              onPress={() => this.setState({ scanned: false })}
+            />
+          )}
+        </View>
       </View>
     );
   }
 
   handleBarCodeScanned = ({ type, data }) => {
     this.setState({ scanned: true });
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+
+    Alert.alert(
+      `Scanned! Type: ${type} and Data: ${data}`,
+      `Please select an option`,
+      [
+        {
+          text: 'See Product Info',
+          onPress: () =>
+            this.props.navigation.navigate('SingleProduct', { data, type })
+        },
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel'
+        },
+        { text: 'OK', onPress: () => console.log('OK Pressed') }
+      ],
+      { cancelable: false }
+    );
   };
 }
 
-export default CameraScreen;
+const styles = StyleSheet.create({
+  CameraContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end'
+  },
+  BarcodeCamera: {
+    ...StyleSheet.absoluteFillObject
+  },
+  ButtonStyle: {
+    marginBottom: 40
+  }
+});
+
+export default withNavigation(CameraScreen);

@@ -1,10 +1,36 @@
 const router = require('express').Router()
 // const {User} = require('../db/models')
 const {Product} = require('../db/models')
-// const firstImageLoad = require('first-image-search-load')
+const firstImageLoad = require('first-image-search-load')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 module.exports = router
+
+router.get('/:gtinUPC', async (req, res, next) => {
+  try {
+    console.log('Here in backend gtinUPC ', req.params.gtinUPC)
+    const product = await Product.findOne({
+      where: {
+        ndbNumber: {
+          [Op.iLike]: `%${req.params.gtinUPC}%`
+        }
+      }
+    })
+    // if (!product) {
+    //   const product = await firstImageLoad.getFirstImageURL(
+    //     'req.params.gtinUPC'
+    //   )
+    //   console.log('TCL: product NEW', product)
+    // }
+
+    res.json(product)
+  } catch (err) {
+    const product = await firstImageLoad.getFirstImageURL('req.params.gtinUPC')
+    console.log('TCL: product NEW', product)
+
+    next(err)
+  }
+})
 
 router.get('/search/:term', async (req, res, next) => {
   try {

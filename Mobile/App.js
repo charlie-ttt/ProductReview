@@ -1,22 +1,23 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from './src/screens/HomeScreen';
 import CameraScreen from './src/screens/CameraScreen';
+import SingleProductScreen from './src/screens/SingleProductScreen';
 
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-const TabNavigator = createBottomTabNavigator(
+const navigator = createStackNavigator(
   {
     Home: HomeScreen,
-    Camera: CameraScreen
+    Camera: CameraScreen,
+    SingleProduct: SingleProductScreen
   },
   {
-    tabBarOptions: {
-      inactiveBackgroundColor: 'lightgray',
-      activeBackgroundColor: 'white',
-      activeTintColor: 'red',
-      inactiveTintColor: 'gray'
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      title: 'Product Reviews'
     }
   }
 );
 
-export default createAppContainer(TabNavigator);
+export default createAppContainer(navigator);

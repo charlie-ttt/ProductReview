@@ -20,7 +20,6 @@ const ProductsList = ({ title, navigation }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    console.log('TCL: ProductsList -> title', title);
     searchDb(title);
   }, []);
 
@@ -29,7 +28,6 @@ const ProductsList = ({ title, navigation }) => {
       const { data } = await axios.get(
         `${ngrokSecret}/api/products/search/${title}`
       );
-      console.log('TCL: data', data);
       setProducts(data);
     } catch (err) {
       // setErrorMessage('Something went wrong');

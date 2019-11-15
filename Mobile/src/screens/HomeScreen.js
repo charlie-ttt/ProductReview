@@ -7,24 +7,16 @@ import ProductsList from '../components/ProductsList';
 import axios from 'axios';
 import { ngrokSecret } from '../../secrets';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [term, setTerm] = useState('');
   // const [results, errorMessage] = useResults();
-  const [test, setTest] = useState('');
-
-  const handlePress = async () => {
-    console.log('click me');
-    const { data } = await axios.get(
-      `${ngrokSecret}/api/products/search/${term}`
-    );
-    console.log('TCL: data', data[0].longName);
-    setTest(data);
-  };
 
   return (
     <>
-      <Button title={'Click me'} onPress={handlePress} />
-
+      <Button
+        title="to SinglePage"
+        onPress={() => navigation.navigate('SingleProduct')}
+      />
       <SearchBar
         term={term}
         onTermChange={setTerm}
@@ -36,11 +28,11 @@ const HomeScreen = () => {
           // results={filterResultsByPrice('$')}
           title="chips"
         />
-        {/* <ProductsList
+        <ProductsList
           // results={filterResultsByPrice('$$')}
           title="Chocolate"
         />
-        <ProductsList
+        {/* <ProductsList
           // results={filterResultsByPrice('$$$')}
           title="Nondairy Milk"
         /> */}
@@ -48,10 +40,6 @@ const HomeScreen = () => {
     </>
   );
 };
-
-const HomeStack = createStackNavigator({
-  Home: { screen: HomeScreen }
-});
 
 const styles = StyleSheet.create({
   container: {
@@ -67,5 +55,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeStack;
-// export default HomeScreen;
+export default HomeScreen;

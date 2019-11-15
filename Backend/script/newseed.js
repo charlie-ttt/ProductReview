@@ -8,11 +8,8 @@ async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  // const users = await Promise.all([
-  //   User.create({email: 'cody@email.com', password: '123'}),
-  //   User.create({email: 'murphy@email.com', password: '123'})
-  // ])
-  const products = await Promise.all([
+  //CHIPS
+  const chipsProducts = await Promise.all([
     Product.create({
       ndbNumber: 11111,
       longName: 'Sea Salt Grain Free Tortilla chips, 5 oz',
@@ -65,11 +62,38 @@ async function seed() {
         'https://sage.blob.core.windows.net/media/5c1315083d4daf04b2657ff4_productdataa00099482471446-c1n1.jpg'
     })
   ])
-  console.log(products)
-  console.log(`seeded ${products.length} products`)
 
-  // console.log(`seeded ${users.length} users`)
-  // console.log(`seeded successfully`)
+  const chocolate = await Promise.all([
+    Product.create({
+      ndbNumber: 11115,
+      longName: 'Dark Chocolate Pretzel Snacking Chocolate, 2 oz',
+      dataSource: 'wholefoods.com',
+      gtinupc: '859686004051',
+      manufacturer: 'barkTHINS',
+      dateModified: '01/01/2019',
+      dateAvailable: '01/01/2019',
+      ingredientsEnglish:
+        'Dark Chocolate [Chocolate Liquor*, Sugar*, Cocoa Butter*, Soy Lecithin (An Emulsifier), Vanilla], Pretzels [Wheat Flour, Salt, Soybean Oil, Barley Malt Flour], Sea Salt',
+      photoUrl:
+        'https://sage.blob.core.windows.net/media/5c15aa1c62396ffeea1d5a90_upc-0859686004051-done-0-glamor-c2322bb4-c398-4ebe-83e8-a12f4826b21d-1ksn2g.jpg'
+    }),
+    Product.create({
+      ndbNumber: 11116,
+      longName: 'Chimp Dark Chocolate, 3 oz',
+      dataSource: 'wholefoods.com',
+      gtinupc: '037014242379',
+      manufacturer: 'ENDANGERED SPECIES CHOCOLATE',
+      dateModified: '01/01/2019',
+      dateAvailable: '01/01/2019',
+      ingredientsEnglish:
+        'Bittersweet Chocolate (Chocolate Liquor, Cane Sugar, Cocoa Butter, Soy Lecithin, Vanilla)',
+      photoUrl:
+        'https://sage.blob.core.windows.net/media/5be8c9efeabd2b8c04e59630_upc-0037014242379-done-0-glamor-1750f35c-0033-4101-8b47-b7049a9141e6-2u1lc0.jpg'
+    })
+  ])
+
+  console.log(`seeded ${chipsProducts.length} Chips products`)
+  console.log(`seeded ${chocolate.length} Chocolate products`)
 }
 
 // We've separated the `seed` function from the `runSeed` function.

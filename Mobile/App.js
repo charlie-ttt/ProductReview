@@ -1,6 +1,6 @@
-import { createAppContainer } from 'react-navigation';
-import HomeScreen from './screens/HomeScreen';
-import CameraScreen from './screens/CameraScreen';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import HomeScreen from './src/screens/HomeScreen';
+import CameraScreen from './src/screens/CameraScreen';
 
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
@@ -20,30 +20,3 @@ const TabNavigator = createBottomTabNavigator(
 );
 
 export default createAppContainer(TabNavigator);
-
-// export default class App extends React.Component {
-//   render() {
-//     return <AppContainer />;
-//   }
-// }
-
-// const AppNavigator = createStackNavigator(
-//   {
-//     Home: { screen: HomeScreen },
-//     Details: { screen: DetailScreen }
-//   },
-// {
-//   initialRouteName: 'Home',
-//   defaultNavigationOptions: {
-//     headerStyle: {
-//       backgroundColor: '#f4511e'
-//     },
-//     headerTintColor: '#fff',
-//     headerTitleStyle: {
-//       fontWeight: 'bold'
-//     }
-//   }
-// }
-// );
-
-// const AppContainer = createAppContainer(AppNavigator);

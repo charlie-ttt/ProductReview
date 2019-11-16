@@ -4,26 +4,25 @@ const {Product} = require('../db/models')
 const firstImageLoad = require('first-image-search-load')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
+const GoogleImageSearch = require('free-google-image-search')
 module.exports = router
 
 router.get('/:gtinUPC', async (req, res, next) => {
   try {
-    console.log('Here in backend gtinUPC ', req.params.gtinUPC)
-    const product = await Product.findOne({
-      where: {
-        ndbNumber: {
-          [Op.iLike]: `%${req.params.gtinUPC}%`
-        }
-      }
-    })
-    // if (!product) {
-    //   const product = await firstImageLoad.getFirstImageURL(
-    //     'req.params.gtinUPC'
-    //   )
-    //   console.log('TCL: product NEW', product)
-    // }
+    // console.log('Here in backend gtinUPC ', req.params.gtinUPC)
+    // const product = await Product.findOne({
+    //   where: {
+    //     ndbNumber: {
+    //       [Op.iLike]: `%${req.params.gtinUPC}%`
+    //     }
+    //   }
+    // })
+    console.log('hello')
+    // GoogleImageSearch.searchImage('cats').then(res => {
+    //   console.log(res) // This will return array of image URLs
+    // })
 
-    res.json(product)
+    res.json('hi')
   } catch (err) {
     const product = await firstImageLoad.getFirstImageURL('req.params.gtinUPC')
     console.log('TCL: product NEW', product)

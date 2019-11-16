@@ -42,6 +42,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.1",
     "first-image-search-load": "^0.4.0",
+    "free-google-image-search": "^1.0.0",
     "history": "^4.9.0",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",

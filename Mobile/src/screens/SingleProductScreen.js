@@ -16,7 +16,7 @@ const SingleProductScreen = ({ navigation }) => {
     // setSingleProduct(response.data);
 
     const { data } = await axios.get(`${ngrokSecret}/api/products/${gtinUPC}`);
-    console.log('TCL: data', data);
+    console.log('TCL: data in singleproduct', data);
   };
   useEffect(() => {
     getSingleProduct(gtinUPC);
@@ -28,7 +28,11 @@ const SingleProductScreen = ({ navigation }) => {
 
   return (
     <View>
-      <Text>{singleProduct.name}</Text>
+      <Image
+        style={styles.image}
+        source={{ uri: singleProduct.photoUrl }}
+      ></Image>
+      {/* <Text>{singleProduct.name}</Text> */}
     </View>
   );
 };

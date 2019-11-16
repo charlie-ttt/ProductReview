@@ -1,10 +1,18 @@
 const router = require('express').Router()
 // const {User} = require('../db/models')
 const {Product} = require('../db/models')
-const firstImageLoad = require('first-image-search-load')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
-const GoogleImageSearch = require('free-google-image-search')
+var gis = require('g-i-s')
+
+// function logResults(error, results) {
+//   if (error) {
+//     console.log(error)
+//   } else {
+//     console.log(JSON.stringify(results, null, '  '))
+//   }
+// }
+
 module.exports = router
 
 router.get('/:gtinUPC', async (req, res, next) => {
@@ -21,11 +29,19 @@ router.get('/:gtinUPC', async (req, res, next) => {
     // GoogleImageSearch.searchImage('cats').then(res => {
     //   console.log(res) // This will return array of image URLs
     // })
-
-    res.json('hi')
+    const logResults = (error, results) => {
+      if (error) {
+        console.log(error)
+      } else {
+        // console.log(JSON.stringify(results, null, '  '))
+        res.json(results[0].url)
+      }
+    }
+    gis(req.params.gtinUPC, logResults)
   } catch (err) {
-    const product = await firstImageLoad.getFirstImageURL('req.params.gtinUPC')
-    console.log('TCL: product NEW', product)
+    // gis('req.params.gtinUPC', logResults)
+    // const product = await firstImageLoad.getFirstImageURL('req.params.gtinUPC')
+    // console.log('TCL: product NEW', product)
 
     next(err)
   }

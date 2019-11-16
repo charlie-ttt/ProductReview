@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 47229,
-  "expoServerNgrokUrl": "https://ry-cwb.achanont.mobile.exp.direct",
-  "packagerNgrokUrl": "https://packager.ry-cwb.achanont.mobile.exp.direct",
-  "ngrokPid": 47248
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

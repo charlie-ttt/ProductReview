@@ -11,7 +11,7 @@ import AllReviews from '../components/AllReviews';
 import BarCharts from '../components/BarCharts';
 import axios from 'axios';
 import { ngrokSecret } from '../../secrets';
-import { bold } from 'ansi-colors';
+import { Container, Content } from 'native-base';
 
 const SingleProductScreen = ({ navigation }) => {
   const [singleProduct, setSingleProduct] = useState(null);
@@ -50,10 +50,11 @@ const SingleProductScreen = ({ navigation }) => {
 
   return (
     <View style={styles.backgroundStyle}>
-      <ScrollView
+      <Content>
+        {/* <ScrollView
         style={styles.scrollStyle}
         showsVerticalScrollIndicator={false}
-      >
+      > */}
         <Text style={styles.productName}>{singleProduct.longName}</Text>
         <View style={styles.headerStyle}>
           <Image
@@ -84,7 +85,8 @@ const SingleProductScreen = ({ navigation }) => {
           <Text> ⭐️⭐️⭐️⭐️</Text>
         </Text>
         <AllReviews asin={singleProduct.asin} />
-      </ScrollView>
+        {/* </ScrollView> */}
+      </Content>
     </View>
   );
 };

@@ -41,7 +41,7 @@ const AmazonReviews = ({ asin }) => {
         renderItem={({ item }) => {
           return (
             <View style={styles.eachReviewStyle}>
-              <Text>{item.title}</Text>
+              <Text style={{ fontWeight: 'bold' }}>{item.title}</Text>
               <Text style={{ fontWeight: 'bold' }}>
                 Rating:
                 <Text> {item.rating}</Text>
@@ -63,7 +63,9 @@ const AmazonReviews = ({ asin }) => {
 
 const styles = StyleSheet.create({
   backgroundStyle: {
-    marginVertical: 10,
+    marginTop: 10,
+    marginBottom: 40,
+    marginHorizontal: 10,
     flex: 1
   },
   eachReviewStyle: {

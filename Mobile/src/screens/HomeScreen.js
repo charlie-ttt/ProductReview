@@ -6,6 +6,7 @@ import ProductsList from '../components/ProductsList';
 // import useResults from '../hooks/useResults';
 import axios from 'axios';
 import { ngrokSecret } from '../../secrets';
+import { Container, Content } from 'native-base';
 
 const HomeScreen = ({ navigation }) => {
   const [term, setTerm] = useState('');

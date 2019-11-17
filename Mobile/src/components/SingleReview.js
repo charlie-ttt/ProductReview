@@ -10,39 +10,19 @@ import {
   Body
 } from 'native-base';
 
-const AllReviews = () => {
+const AllReviews = ({ reviewInfo }) => {
   return (
-    // <View style={styles.backgroundStyle}>
-    // <Container>
-    //   {/* <Header /> */}
-    //   <Content>
     <Card>
       <CardItem header>
-        <Text>Great Product! Repurchased multiple time!</Text>
+        <Text>{reviewInfo.title}</Text>
       </CardItem>
       <CardItem>
         <Body>
-          <Text>
-            Comments: lorem ipsuakdjfa;kdjf;ajdkfllkdkkajdfkl aksdjfkajdf great
-            products.
-          </Text>
-          <Text>- John Smith</Text>
+          <Text>{reviewInfo.body}</Text>
+          <Text>- {reviewInfo.name}</Text>
         </Body>
       </CardItem>
-      {/* <CardItem footer>
-          </CardItem> */}
     </Card>
-    //   </Content>
-
-    //   {/* <Text>John Smith</Text>
-    //   <Text>4.5</Text>
-    //   <Text>
-    //     Comments: lorem ipsuakdjfa;kdjf;ajdkfllkdkkajdfkl aksdjfkajdf great
-    //     products.
-    //   </Text>
-    //   <Text>Date: Nov 16, 2019</Text> */}
-    // </Container>
-    // </View>
   );
 };
 

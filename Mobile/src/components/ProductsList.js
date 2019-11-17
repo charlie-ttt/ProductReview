@@ -28,7 +28,7 @@ const ProductsList = ({ title, navigation }) => {
       const { data } = await axios.get(
         `${ngrokSecret}/api/products/search/${title}`
       );
-      setProducts(data);
+      setProducts(data.slice(0, 7));
     } catch (err) {
       // setErrorMessage('Something went wrong');
     }
@@ -45,13 +45,14 @@ const ProductsList = ({ title, navigation }) => {
         keyExtractor={result => result.id.toString()}
         renderItem={({ item }) => {
           return (
-            // <TouchableOpacity
-            //   onPress={() =>
-            //     navigation.navigate('ResultsShow', { id: item.id })
-            //   }
-            // >
-            <ProductsDetail product={item} />
-            // </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                console.log(item);
+                navigation.navigate('SingleProduct', { gtinupc: item.gtinupc });
+              }}
+            >
+              <ProductsDetail product={item} />
+            </TouchableOpacity>
           );
         }}
       />

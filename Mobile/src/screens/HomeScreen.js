@@ -11,18 +11,8 @@ const HomeScreen = ({ navigation }) => {
   const [term, setTerm] = useState('');
   // const [results, errorMessage] = useResults();
 
-  const handleImg = async () => {
-    const res = await axios.get(`${ngrokSecret}/api/products/cat`);
-    console.log('TCL: res', res);
-  };
-
   return (
-    <>
-      <Button title="IMG" onPress={() => handleImg()} />
-      <Button
-        title="to SinglePage"
-        onPress={() => navigation.navigate('SingleProduct')}
-      />
+    <View style={styles.backgroundStyle}>
       <SearchBar
         term={term}
         onTermChange={setTerm}
@@ -32,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
       <ScrollView>
         <ProductsList
           // results={filterResultsByPrice('$')}
-          title="chips"
+          title="Chips"
         />
         <ProductsList
           // results={filterResultsByPrice('$$')}
@@ -43,22 +33,12 @@ const HomeScreen = ({ navigation }) => {
           title="Nondairy Milk"
         /> */}
       </ScrollView>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start'
-  },
-  MainText: {
-    padding: 20,
-    fontSize: 15,
-    backgroundColor: 'lightgray'
-  }
+  backgroundStyle: {}
 });
 
 export default HomeScreen;

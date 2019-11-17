@@ -5,10 +5,11 @@ const db = require('../server/db')
 const {Product} = require('../server/db/models')
 
 async function seed() {
+  // await db.sync()
   await db.sync({force: true})
   console.log('db synced!')
 
-  //CHIPS
+  // CHIPS
   const chipsProducts = await Promise.all([
     Product.create({
       ndbNumber: 11111,

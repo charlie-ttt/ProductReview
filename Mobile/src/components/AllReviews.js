@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 import SingleReview from './SingleReview';
 import AmazonReviews from './AmazonReviews';
-import { Container } from 'native-base';
+import { Container, Content } from 'native-base';
 
 const AllReviews = ({ asin }) => {
   return (
     <Container>
-      {/* <View style={styles.backgroundStyle}> */}
-      <SingleReview />
-      <SingleReview />
-      <SingleReview />
-      <AmazonReviews asin={asin} />
-      {/* </View> */}
+      <Content>
+        {/* <View style={styles.backgroundStyle}> */}
+        <SingleReview />
+        <SingleReview />
+        <SingleReview />
+        <AmazonReviews asin={asin} />
+        {/* </View> */}
+      </Content>
     </Container>
   );
 };

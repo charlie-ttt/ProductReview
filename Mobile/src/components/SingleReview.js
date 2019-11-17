@@ -13,35 +13,35 @@ import {
 const AllReviews = () => {
   return (
     // <View style={styles.backgroundStyle}>
-    <Container>
-      <Header />
-      <Content>
-        <Card>
-          <CardItem header>
-            <Text>Great Product! Repurchased multiple time!</Text>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>
-                Comments: lorem ipsuakdjfa;kdjf;ajdkfllkdkkajdfkl aksdjfkajdf
-                great products.
-              </Text>
-            </Body>
-          </CardItem>
-          <CardItem footer>
-            <Text>- John Smith</Text>
-          </CardItem>
-        </Card>
-      </Content>
+    // <Container>
+    //   {/* <Header /> */}
+    //   <Content>
+    <Card>
+      <CardItem header>
+        <Text>Great Product! Repurchased multiple time!</Text>
+      </CardItem>
+      <CardItem>
+        <Body>
+          <Text>
+            Comments: lorem ipsuakdjfa;kdjf;ajdkfllkdkkajdfkl aksdjfkajdf great
+            products.
+          </Text>
+          <Text>- John Smith</Text>
+        </Body>
+      </CardItem>
+      {/* <CardItem footer>
+          </CardItem> */}
+    </Card>
+    //   </Content>
 
-      {/* <Text>John Smith</Text>
-      <Text>4.5</Text>
-      <Text>
-        Comments: lorem ipsuakdjfa;kdjf;ajdkfllkdkkajdfkl aksdjfkajdf great
-        products.
-      </Text>
-      <Text>Date: Nov 16, 2019</Text> */}
-    </Container>
+    //   {/* <Text>John Smith</Text>
+    //   <Text>4.5</Text>
+    //   <Text>
+    //     Comments: lorem ipsuakdjfa;kdjf;ajdkfllkdkkajdfkl aksdjfkajdf great
+    //     products.
+    //   </Text>
+    //   <Text>Date: Nov 16, 2019</Text> */}
+    // </Container>
     // </View>
   );
 };

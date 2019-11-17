@@ -64,7 +64,7 @@ const AmazonReviews = ({ asin }) => {
 const styles = StyleSheet.create({
   backgroundStyle: {
     marginTop: 10,
-    marginBottom: 40,
+    // paddingBottom: 40,
     marginHorizontal: 10,
     flex: 1
   },

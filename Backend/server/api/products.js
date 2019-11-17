@@ -19,25 +19,39 @@ module.exports = router
 router.get('/:gtinupc', async (req, res, next) => {
   try {
     console.log('Here in backend gtinupc ', req.params.gtinupc)
+    console.log(
+      'Here in backend gtinupc altered ',
+      req.params.gtinupc.slice(1, req.params.gtinupc.length - 1)
+    )
+
     const product = await Product.findOne({
       where: {
         gtinupc: {
-          [Op.iLike]: `%${req.params.gtinupc}%`
+          [Op.iLike]: `%${req.params.gtinupc.slice(
+            1,
+            req.params.gtinupc.length - 1
+          )}%`
         }
       }
     })
-    // const product = await Product.findAll()
-    console.log('TC: product', product)
-    res.json(product)
-    // const logResults = (error, results) => {
-    //   if (error) {
-    //     console.log(error)
-    //   } else {
-    //     // console.log(JSON.stringify(results, null, '  '))
-    //     res.json(results[0].url)
-    //   }
-    // }
-    // gis(req.params.gtinupc, logResults)
+
+    if ((await product) && (await !product.photoUrl)) {
+      console.log('generating image')
+      const logResults = async (error, results) => {
+        if (error) {
+          console.log(error)
+        } else {
+          // console.log(JSON.stringify(results, null, '  '))
+          console.log('One url', results[0].url)
+          await product.update({photoUrl: results[0].url})
+          res.json(product)
+        }
+      }
+      gis(product.longName, logResults)
+    } else {
+      console.log('TC: product', product)
+      res.json(product)
+    }
   } catch (err) {
     // gis('req.params.gtinupc', logResults)
     // const product = await firstImageLoad.getFirstImageURL('req.params.gtinupc')

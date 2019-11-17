@@ -52,13 +52,13 @@ class CameraScreen extends React.Component {
     this.setState({ scanned: true });
 
     Alert.alert(
-      `Scanned! Type: ${type} and Data: ${data}`,
+      `Scanned! upc: ${data}`,
       `Please select an option`,
       [
         {
           text: 'See Product Info',
           onPress: () =>
-            this.props.navigation.navigate('SingleProduct', { data, type })
+            this.props.navigation.navigate('SingleProduct', { gtinupc: data })
         },
         {
           text: 'Cancel',

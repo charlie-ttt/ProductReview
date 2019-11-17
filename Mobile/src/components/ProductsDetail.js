@@ -22,9 +22,6 @@ const ProductsDetail = ({ product }) => {
         }}
       />
       <Text style={styles.name}>{product.longName}</Text>
-      {/* <Text>
-        {product.rating} Stars, {product.review_count} Reviews
-      </Text> */}
     </View>
   );
 };

@@ -6,12 +6,12 @@ const amazonScraper = require('amazon-buddy')
 
 module.exports = router
 
-router.get('/amazon/:name', async (req, res, next) => {
+router.get('/amazon/:asin', async (req, res, next) => {
   try {
     console.log('hellow')
 
     let reviews = await amazonScraper.reviews({
-      asin: 'B00U9WP17Q',
+      asin: req.params.asin,
       number: 3,
       save: false
     })

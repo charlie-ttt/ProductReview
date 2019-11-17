@@ -28,10 +28,10 @@ const HomeScreen = ({ navigation }) => {
           // results={filterResultsByPrice('$$')}
           title="Chocolate"
         />
-        {/* <ProductsList
+        <ProductsList
           // results={filterResultsByPrice('$$$')}
-          title="Nondairy Milk"
-        /> */}
+          title="Milk"
+        />
       </ScrollView>
     </View>
   );

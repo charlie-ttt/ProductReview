@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
 import axios from 'axios';
 import { ngrokSecret } from '../../secrets';
 
-const AmazonReviews = asin => {
+const AmazonReviews = ({ asin }) => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     searchReviews(asin);

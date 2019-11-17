@@ -33,7 +33,8 @@ const Product = db.define(
     },
     photoUrl: {
       type: Sequelize.STRING
-    }
+    },
+    asin: Sequelize.STRING
   },
   {
     timestamps: false

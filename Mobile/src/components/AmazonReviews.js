@@ -31,7 +31,7 @@ const AmazonReviews = asin => {
   return (
     <View style={styles.backgroundStyle}>
       <Text style={styles.headerStyle}>Amazon Reviews</Text>
-      <Text>Consensus: {avgReview()}</Text>
+      <Text>Consensus: {avgReview()} / 5</Text>
 
       <FlatList
         horizontal

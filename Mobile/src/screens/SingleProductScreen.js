@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import AllReviews from '../components/AllReviews';
+import BarCharts from '../components/BarCharts';
 import axios from 'axios';
 import { ngrokSecret } from '../../secrets';
-// import yelp from '../api/yelp';
 
 const SingleProductScreen = ({ navigation }) => {
   const [singleProduct, setSingleProduct] = useState(null);
-  // const id = navigation.getParam('id');
   console.log('this ONE', navigation.getParam('gtinupc'));
   const gtinUPC = navigation.getParam('gtinupc');
 
   const getSingleProduct = async gtinUPC => {
-    // const response = await yelp.get(`/${id}`);
-    // const response = await axios.get(`/${id}`);
-    // setSingleProduct(response.data);
-
     const { data } = await axios.get(`${ngrokSecret}/api/products/${gtinUPC}`);
     console.log('TCL: data in singleproduct', data);
     setSingleProduct(data);
@@ -31,11 +26,14 @@ const SingleProductScreen = ({ navigation }) => {
   return (
     <View style={styles.backgroundStyle}>
       <ScrollView>
-        <Image
-          style={styles.image}
-          source={{ uri: singleProduct.photoUrl }}
-        ></Image>
         <Text style={styles.productName}>{singleProduct.longName}</Text>
+        <View style={styles.headerStyle}>
+          <Image
+            style={styles.image}
+            source={{ uri: singleProduct.photoUrl }}
+          ></Image>
+          <BarCharts />
+        </View>
         <Text style={styles.headerTitle}>Ingredients:</Text>
         <Text style={styles.ingredients}>
           {singleProduct.ingredientsEnglish}
@@ -53,13 +51,17 @@ const SingleProductScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   image: {
-    width: 250,
+    width: 230,
     height: 200,
+    // marginLeft: 10,
     borderRadius: 4,
     marginBottom: 5
   },
   productName: {
-    marginTop: 10
+    marginVertical: 10,
+    marginLeft: 10,
+    fontSize: 18,
+    fontWeight: 'bold'
   },
   headerTitle: {
     fontWeight: 'bold',
@@ -74,6 +76,11 @@ const styles = StyleSheet.create({
   backgroundStyle: {
     marginTop: 15,
     alignItems: 'center'
+  },
+  headerStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 200
   }
 });
 

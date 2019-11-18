@@ -13,11 +13,11 @@ import {
 const AllReviews = ({ reviewInfo }) => {
   return (
     <Card>
-      <CardItem header>
-        <Text>{reviewInfo.title}</Text>
+      <CardItem style={{ paddingVertical: 0 }}>
+        <Text style={{ fontWeight: 'bold' }}>{reviewInfo.title}</Text>
       </CardItem>
-      <CardItem>
-        <Body>
+      <CardItem style={{ paddingVertical: 0 }}>
+        <Body style={{ paddingVertical: 0 }}>
           <Text>{reviewInfo.body}</Text>
           <Text>- {reviewInfo.name}</Text>
         </Body>

@@ -96,6 +96,20 @@ async function seed() {
       photoUrl:
         'https://sage.blob.core.windows.net/media/5be8c9efeabd2b8c04e59630_upc-0037014242379-done-0-glamor-1750f35c-0033-4101-8b47-b7049a9141e6-2u1lc0.jpg',
       asin: 'B004DIUN3Y'
+    }),
+    Product.create({
+      ndbNumber: 11130,
+      longName: `TONY'S CHOCOLONELY Caramel Sea Salt Chocolate Bar, 6 oz`,
+      dataSource: 'wholefoods.com',
+      gtinupc: '858010005603',
+      manufacturer: `TONY'S CHOCOLONELY`,
+      dateModified: '01/01/2019',
+      dateAvailable: '01/01/2019',
+      ingredientsEnglish:
+        'Fair Trade Sugar, Whole Milk Powder, Fair Trade Cocoa Butter, Fair Trade Cocoa Mass, Pieces of Caramel 10% (Sugar, Glucose Syrup, Cream, Butter), Sea Salt 0.5%, Soy Lecithin, Cocoa Solids 32% Min.',
+      photoUrl:
+        'https://sage.blob.core.windows.net/media/579a28ad28c989ff38335f10_tonyschocolonely-chocolatecaramelseasaltchocolate-1.jpg',
+      asin: 'B01K42UISC'
     })
   ])
 

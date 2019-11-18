@@ -4,10 +4,10 @@ import { BarChart } from 'react-native-chart-kit';
 
 const BarCharts = () => {
   const barData = {
-    labels: ['yum', '💗'],
+    labels: ['🍰', '💗'],
     datasets: [
       {
-        data: [55, 95]
+        data: [85, 34]
       }
     ]
   };
@@ -31,7 +31,7 @@ const BarCharts = () => {
         backgroundGradientFrom: 'white',
         backgroundGradientTo: 'white',
         decimalPlaces: 0,
-        color: () => `rgba(0, 0, 0)`,
+        color: (opacity = 1) => `rgba(101, 157, 236, ${opacity})`,
 
         style: {
           justifyContent: 'center'
@@ -39,6 +39,7 @@ const BarCharts = () => {
       }}
       style={styles.backgroundStyle}
     />
+
     // </View>
   );
 };

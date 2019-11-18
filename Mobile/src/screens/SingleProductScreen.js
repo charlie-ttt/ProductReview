@@ -8,10 +8,11 @@ import {
   Dimensions
 } from 'react-native';
 import AllReviews from '../components/AllReviews';
-import BarCharts from '../components/BarCharts';
+import BarCharts from '../components/BarChartsNew';
 import axios from 'axios';
 import { ngrokSecret } from '../../secrets';
 import { Container, Content } from 'native-base';
+import { white } from 'ansi-colors';
 
 const SingleProductScreen = ({ navigation }) => {
   const [singleProduct, setSingleProduct] = useState(null);
@@ -56,6 +57,11 @@ const SingleProductScreen = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
       > */}
         <Text style={styles.productName}>{singleProduct.longName}</Text>
+        <View style={styles.suggestionStyle}>
+          <Text style={{ color: 'white', fontWeight: 'bold' }}>
+            Best Tasting!
+          </Text>
+        </View>
         <View style={styles.headerStyle}>
           <Image
             style={styles.image}
@@ -142,6 +148,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     fontWeight: 'bold',
     color: 'red'
+  },
+  suggestionStyle: {
+    marginVertical: 10,
+    marginHorizontal: 10,
+    backgroundColor: 'rgb(70,140,40)',
+    borderRadius: 16,
+    padding: 10,
+    width: '30%',
+    alignSelf: 'center',
+    alignItems: 'center'
   },
   scrollStyle: {}
 });

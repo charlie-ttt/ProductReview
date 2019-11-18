@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import AllReviews from '../components/AllReviews';
 import BarCharts from '../components/BarChartsNew';
+import FullNutrition from '../components/FullNutrition';
 import axios from 'axios';
 import { ngrokSecret } from '../../secrets';
 import { Container, Content } from 'native-base';
@@ -16,6 +17,7 @@ import { Container, Content } from 'native-base';
 const SingleProductScreen = ({ navigation }) => {
   const [singleProduct, setSingleProduct] = useState(null);
   const [allergen, setAllergen] = useState([]);
+  const [showNutrition, setShownutrition] = useState(false);
 
   const gtinupc = navigation.getParam('gtinupc');
 
@@ -82,6 +84,25 @@ const SingleProductScreen = ({ navigation }) => {
         <Text style={styles.ingredients}>
           {singleProduct.ingredientsEnglish}
         </Text>
+        <TouchableOpacity
+          onPress={() => {
+            setShownutrition(prev => !prev);
+          }}
+          style={styles.showNutrition}
+        >
+          <Text
+            style={{
+              ...styles.ingredients,
+              marginVertical: 5,
+              alignSelf: 'center'
+            }}
+          >
+            See full nutrition
+          </Text>
+        </TouchableOpacity>
+        {singleProduct.gtinupc && showNutrition ? (
+          <FullNutrition gtinupc={singleProduct.gtinupc} />
+        ) : null}
         {allergen[0] ? (
           <Text style={styles.warningText}>
             Warning:{' '}
@@ -166,7 +187,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center'
   },
-  scrollStyle: {}
+  showNutrition: {
+    backgroundColor: 'lightgray',
+    borderRadius: 4,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    width: 130,
+    height: 30,
+    marginTop: 10
+  }
 });
 
 export default SingleProductScreen;

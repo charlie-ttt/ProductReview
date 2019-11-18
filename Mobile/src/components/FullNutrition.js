@@ -12,7 +12,7 @@ import {
 import axios from 'axios';
 import { ngrokSecret } from '../../secrets';
 
-const NutritionScreen = ({ gtinupc }) => {
+const FullNutrition = ({ gtinupc }) => {
   const [nutrition, setNutrition] = useState({});
 
   useEffect(() => {
@@ -39,21 +39,19 @@ const NutritionScreen = ({ gtinupc }) => {
 
       <CardItem style={{ paddingVertical: 0 }}>
         <Body style={{ paddingVertical: 0 }}>
-          <Text>Food name: {nutrition.food_name}</Text>
+          <Text>Food Type: {nutrition.food_name}</Text>
           <Text>
-            Serving: {nutrition.serving_qty} {nutrition.serving_unit}
+            Serving: {nutrition.serving_qty}{' '}
+            <Text>{nutrition.serving_unit}</Text>
           </Text>
           <Text>
-            Calories:
-            <Text>{nutrition.nf_calories}</Text>
+            Calories: <Text>{nutrition.nf_calories}</Text>
           </Text>
           <Text>
-            Sugar:
-            <Text>{nutrition.nf_sugars} gram(s)</Text>
+            Sugar: <Text>{nutrition.nf_sugars} gram(s)</Text>
           </Text>
           <Text>
-            Carbohydrate:
-            <Text>{nutrition.nf_total_carbohydrate} gram(s)</Text>
+            Carbohydrate: <Text>{nutrition.nf_total_carbohydrate} gram(s)</Text>
           </Text>
           <Text>
             Protein: <Text>{nutrition.nf_protein} gram(s)</Text>
@@ -76,4 +74,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default NutritionScreen;
+export default FullNutrition;

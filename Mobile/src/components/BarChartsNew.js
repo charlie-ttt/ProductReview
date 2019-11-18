@@ -6,7 +6,7 @@ const BarCharts = () => {
   const data = {
     labels: ['❤️', '🍰'],
     legend: [''],
-    data: [[60], [30]],
+    data: [[45], [80]],
     barColors: ['#dfe4ea', '#ced6e0', '#a4b0be']
   };
   // const screenWidth = Dimensions.get('window').width;

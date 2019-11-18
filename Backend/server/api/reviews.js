@@ -12,7 +12,7 @@ router.get('/amazon/:asin', async (req, res, next) => {
 
     let reviews = await amazonScraper.reviews({
       asin: req.params.asin,
-      number: 3,
+      number: 5,
       save: false
     })
 

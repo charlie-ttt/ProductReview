@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from './src/screens/HomeScreen';
 import CameraScreen from './src/screens/CameraScreen';
 import SingleProductScreen from './src/screens/SingleProductScreen';
+import NutritionScreen from './src/screens/NutritionScreen';
 
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
@@ -10,7 +11,8 @@ const navigator = createStackNavigator(
   {
     Home: HomeScreen,
     Camera: CameraScreen,
-    SingleProduct: SingleProductScreen
+    SingleProduct: SingleProductScreen,
+    NutritionScreen: NutritionScreen
   },
   {
     initialRouteName: 'Home',

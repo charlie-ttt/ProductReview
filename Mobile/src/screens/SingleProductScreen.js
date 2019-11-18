@@ -5,23 +5,22 @@ import {
   StyleSheet,
   ScrollView,
   Image,
-  Dimensions
+  TouchableOpacity
 } from 'react-native';
 import AllReviews from '../components/AllReviews';
 import BarCharts from '../components/BarChartsNew';
 import axios from 'axios';
 import { ngrokSecret } from '../../secrets';
 import { Container, Content } from 'native-base';
-import { white } from 'ansi-colors';
 
 const SingleProductScreen = ({ navigation }) => {
   const [singleProduct, setSingleProduct] = useState(null);
   const [allergen, setAllergen] = useState([]);
 
-  const gtinUPC = navigation.getParam('gtinupc');
+  const gtinupc = navigation.getParam('gtinupc');
 
-  const getSingleProduct = async gtinUPC => {
-    const { data } = await axios.get(`${ngrokSecret}/api/products/${gtinUPC}`);
+  const getSingleProduct = async gtinupc => {
+    const { data } = await axios.get(`${ngrokSecret}/api/products/${gtinupc}`);
     // console.log('TCL: data in singleproduct', data);
 
     console.log('here in getSingleProduct', singleProduct);
@@ -42,7 +41,7 @@ const SingleProductScreen = ({ navigation }) => {
     }
   };
   useEffect(() => {
-    getSingleProduct(gtinUPC);
+    getSingleProduct(gtinupc);
   }, [singleProduct]);
 
   if (!singleProduct) {
@@ -62,6 +61,14 @@ const SingleProductScreen = ({ navigation }) => {
             Best Tasting!
           </Text>
         </View>
+        {/* <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('NutritionScreen', { gtinupc });
+          }}
+        >
+          <Text>See full nutrition</Text>
+        </TouchableOpacity> */}
+        {/* {gtinupc ? <NutritionalValue gtinupc={gtinupc} /> : null} */}
         <View style={styles.headerStyle}>
           <Image
             style={styles.image}

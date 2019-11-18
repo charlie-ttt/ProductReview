@@ -4,14 +4,7 @@ const {Product} = require('../db/models')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const gis = require('g-i-s')
-
-// function logResults(error, results) {
-//   if (error) {
-//     console.log(error)
-//   } else {
-//     console.log(JSON.stringify(results, null, '  '))
-//   }
-// }
+const nutritionix = require('./nutritionix')
 
 module.exports = router
 
@@ -53,14 +46,12 @@ router.get('/:gtinupc', async (req, res, next) => {
       res.json(product)
     }
   } catch (err) {
-    // gis('req.params.gtinupc', logResults)
-    // const product = await firstImageLoad.getFirstImageURL('req.params.gtinupc')
-    // console.log('TCL: product NEW', product)
     console.log('in err')
     next(err)
   }
 })
 
+//this is used for category listing on homepage
 router.get('/search/:term', async (req, res, next) => {
   try {
     const product = await Product.findAll({
@@ -77,17 +68,15 @@ router.get('/search/:term', async (req, res, next) => {
     next(err)
   }
 })
-router.get('/generateImg/:productName', async (req, res, next) => {
+
+//Request for nutritional value
+router.get('/nutrition/:gtinUPC', async (req, res, next) => {
   try {
-    const logResults = (error, results) => {
-      if (error) {
-        console.log(error)
-      } else {
-        // console.log(JSON.stringify(results, null, '  '))
-        res.json(results[0].url)
-      }
-    }
-    gis(req.params.productName, logResults)
+    console.log('in try now, req.params.gtinUPC', req.params.gtinUPC)
+    const {data} = await nutritionix.get(`item?upc=${req.params.gtinUPC}`)
+    console.log('TCL: data hereee', data)
+
+    res.json(data)
   } catch (err) {
     next(err)
   }

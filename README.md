@@ -1,4 +1,4 @@
-# Product Review 
+# Product Review 🦦
 
 Product Review is an iOS & Android app that retrieves reviews for grocery items using React Native and USDA Food/Nutrition Database
 
